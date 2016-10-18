@@ -1,0 +1,11 @@
+---
+Name: translatabletlds
+After:
+  - 'framework/*'
+---
+Translatable:
+  enforce_global_unique_urls: false
+TranslatableTLDs:
+  rules:
+    'com': 'en_US'
+    'de': 'de_DE'

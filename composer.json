@@ -1,0 +1,21 @@
+{
+  "name": "level51/translatable-tlds",
+  "version": "0.1.0",
+  "time": "2016-10-18",
+  "license": "MIT",
+  "authors": [{
+    "name": "Julian Scheuchenzuber",
+    "email": "js@lvl51.de"
+  }],
+  "description": "SilverStripe module providing TLD-based locale switching using Translatable.",
+  "type": "silverstripe-module",
+  "require": {
+    "php": ">=5.3.2",
+    "silverstripe/framework": "~3.1",
+    "silverstripe/cms": "~3.1",
+    "silverstripe/translatable": "~2.1"
+  },
+  "extra": {
+    "installer-name": "translatable-tlds"
+  }
+}
