@@ -32,11 +32,14 @@ You can add rules via Config API:
 
 ```yml
 TranslatableTLDs:
+  part: 'tld'
   rules:
     'com': 'en_US'
     'de': 'de_DE'
     'net': 'de_AT'
 ```
+
+If part is set to 'subdomain', then the module will switch to subdomain matching.
 
 ## Maintainers
 - Julian Scheuchenzuber <js@lvl51.de>
