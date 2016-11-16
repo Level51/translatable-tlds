@@ -10,8 +10,9 @@ class TranslatableTLDs {
      *
      * @return string
      */
-    public static function get_tld() {
-        return pathinfo($_SERVER['SERVER_NAME'], PATHINFO_EXTENSION);
+    public static function get_tld($part == 'tld') {
+        
+        return ($part == 'tld')?(pathinfo($_SERVER['SERVER_NAME'], PATHINFO_EXTENSION)):array_shift((explode(".",$_SERVER['HTTP_HOST'])));
     }
 
     /**
@@ -21,7 +22,8 @@ class TranslatableTLDs {
      */
     public static function lookup_tld_rule() {
         $rules = Config::inst()->get(self::class, 'rules');
+        $part = Config::inst()->get(self::class, 'part');
 
-        return isset($rules[self::get_tld()]) ? $rules[self::get_tld()] : null;
+        return isset($rules[self::get_tld()]) ? $rules[self::get_tld($part)] : null;
     }
 }
