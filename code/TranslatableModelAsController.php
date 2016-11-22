@@ -5,7 +5,7 @@ class TranslatableModelAsController extends ModelAsController {
     /**
      * Does basically the same as it's parent class but does not bypass the locale filtering when choosing the SiteTree record.
      *
-     * @return ContentController
+     * @return ContentController|SS_HTTPResponse
      * @throws Exception If URLSegment not passed in as a request parameter.
      */
     public function getNestedController() {
@@ -23,6 +23,20 @@ class TranslatableModelAsController extends ModelAsController {
         $sitetree = DataObject::get_one('SiteTree', $conditions);
 
         if(!$sitetree) {
+
+            if(class_exists('Translatable')) {
+
+                // Try again with disabled locale filter
+                Translatable::disable_locale_filter();
+                $sitetree = DataObject::get_one('SiteTree', $conditions);
+
+                // Redirect if a page was found and has a translation for the current locale
+                if ($sitetree && ($translation = $sitetree->getTranslation(i18n::get_locale())))
+                    return $this->redirect($translation->AbsoluteLink());
+
+                Translatable::enable_locale_filter();
+            }
+
             $response = ErrorPage::response_for(404);
             $this->httpError(404, $response ? $response : 'The requested page could not be found.');
         }
