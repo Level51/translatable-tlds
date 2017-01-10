@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file. Thanks to O
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+- Method for getting the TLD for a given locale
+
 ## [0.1.0] - 2016-10-18
 ### Added
 - TranslatableModelAsController
