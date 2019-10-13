@@ -6,6 +6,7 @@ After:
 Translatable:
   enforce_global_unique_urls: false
 TranslatableTLDs:
+  part: tld # valid values are tld and subdomain
   rules:
     'com': 'en_US'
     'de': 'de_DE'
